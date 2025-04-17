@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
     proxy: {
-      "/api": "http://localhost:5000", // Proxy API requests to your backend
+      "/api": "http://localhost:8080",
     },
   },
 });
