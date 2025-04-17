@@ -6,6 +6,8 @@ import generateToken from "../utils/generateToken.js";
 
 // SignUp Controller
 export const signup = async (req, res) => {
+  const isProduction = process.env.NODE_ENV === "production";
+
   const { name, email, password } = req.body;
 
   // Checking for required fields
@@ -41,8 +43,8 @@ export const signup = async (req, res) => {
     // Set the token as a cookie in the response with options
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
+      secure: isProduction, // true in production, false in dev
+      sameSite: isProduction ? "None" : "Lax", // 'None' required if using cross-site cookies with secure=true
       maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days expiry for tokens
     });
 
@@ -58,6 +60,7 @@ export const signup = async (req, res) => {
 
 // Login Controller
 export const login = async (req, res) => {
+  const isProduction = process.env.NODE_ENV === "production";
   const { email, password } = req.body;
 
   // Checking if both email and password are provided
@@ -87,8 +90,8 @@ export const login = async (req, res) => {
     // Set the token as a cookie in the response
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
+      secure: isProduction, // true in production, false in dev
+      sameSite: isProduction ? "None" : "Lax", // 'None' required if using cross-site cookies with secure=true
       maxAge: 10 * 24 * 60 * 60 * 1000,
     });
 
@@ -107,16 +110,19 @@ export const login = async (req, res) => {
 
 // LogOut Controller
 export const logout = (req, res) => {
+  const isProduction = process.env.NODE_ENV === "production";
+
   // Clear the token cookie to log the user out
   res.clearCookie("token", {
     httpOnly: true,
-    sameSite: "Lax",
-    secure: false,
+    secure: isProduction, // true in production, false in dev
+    sameSite: isProduction ? "None" : "Lax", // 'None' required if using cross-site cookies with secure=true
   });
 
   return res.status(200).json({ message: "Logged out successfully" });
 };
 
+// Authentication controller
 export const getMe = async (req, res) => {
   // Disable caching to ensure fresh data is always fetched
   res.setHeader("Cache-Control", "no-store");

@@ -72,6 +72,7 @@ This application serves as a basic foundation for task management systems that r
   DB_NAME = "tasks_manager_db"
 
   PORT = "8080"
+  NODE_ENV= "development"
 
   CORS_ORIGIN=http://localhost:5173
   JWT_SECRET=your_jwt_secret
