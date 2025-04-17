@@ -44,7 +44,7 @@ const HomePage = () => {
         </div>
         <HomeContent
           img={{
-            src: "./src/assets/undraw_calendar_8r6s.svg",
+            src: "/undraw_calendar_8r6s.svg",
             alt: "calendar",
           }}
           link="/login"
@@ -53,7 +53,7 @@ const HomePage = () => {
         />
         <HomeContent
           img={{
-            src: "./src/assets/undraw_gifts_4gy3.svg",
+            src: "/undraw_gifts_4gy3.svg",
             alt: "gifts",
           }}
           link="/login"
@@ -62,7 +62,7 @@ const HomePage = () => {
         />
         <HomeContent
           img={{
-            src: "./src/assets/undraw_photographer_2rbr.svg",
+            src: "/undraw_photographer_2rbr.svg",
             alt: "photographer",
           }}
           link="/login"
@@ -71,7 +71,7 @@ const HomePage = () => {
         />
         <HomeContent
           img={{
-            src: "./src/assets/undraw_relax-mode_6i13-2.svg",
+            src: "/undraw_relax-mode_6i13-2.svg",
             alt: "relax-mode",
           }}
           link="/login"
@@ -80,7 +80,7 @@ const HomePage = () => {
         />
         <HomeContent
           img={{
-            src: "./src/assets/undraw_task-brief_esbq.svg",
+            src: "/undraw_task-brief_esbq.svg",
             alt: "brief",
           }}
           link="/login"
